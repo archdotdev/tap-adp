@@ -18,14 +18,25 @@ plugins:
 
     # TODO: Declare settings and their types here:
     settings:
-    - name: username
-      label: Username
-      description: The username to use for authentication
+    - name: client_id
+      label: Client ID
+      description: The OAuth client ID for ADP API
+      sensitive: true
 
-    - name: password
+    - name: client_secret
       kind: password
-      label: Password
-      description: The password to use for authentication
+      label: Client Secret
+      description: The OAuth client secret for ADP API
+      sensitive: true
+
+    - name: cert_public
+      label: Client Certificate
+      description: Client certificate for ADP API
+      sensitive: true
+
+    - name: cert_private
+      label: Client Private Key
+      description: Client private key for ADP API
       sensitive: true
 
     - name: start_date

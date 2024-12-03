@@ -6,10 +6,11 @@ import decimal
 import typing as t
 from importlib import resources
 
-from singer_sdk.authenticators import BearerTokenAuthenticator
+from singer_sdk.authenticators import OAuthAuthenticator
 from singer_sdk.helpers.jsonpath import extract_jsonpath
 from singer_sdk.pagination import BaseAPIPaginator  # noqa: TCH002
 from singer_sdk.streams import RESTStream
+from tap_adp.authenticator import ADPAuthenticator
 
 if t.TYPE_CHECKING:
     import requests
@@ -32,20 +33,13 @@ class ADPStream(RESTStream):
     @property
     def url_base(self) -> str:
         """Return the API URL root, configurable via tap settings."""
-        # TODO: hardcode a value here, or retrieve it from self.config
-        return "https://api.mysample.com"
+        return "https://api.adp.com"
 
     @property
-    def authenticator(self) -> BearerTokenAuthenticator:
-        """Return a new authenticator object.
-
-        Returns:
-            An authenticator instance.
-        """
-        return BearerTokenAuthenticator.create_for_stream(
-            self,
-            token=self.config.get("auth_token", ""),
-        )
+    #TODO make this a singleton
+    def authenticator(self) -> ADPAuthenticator:
+        """Return a new authenticator object."""
+        return ADPAuthenticator.create_for_stream(self)
 
     @property
     def http_headers(self) -> dict:

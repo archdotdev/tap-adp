@@ -15,15 +15,16 @@ SCHEMAS_DIR = resources.files(__package__) / "schemas"
 #       - Copy-paste as many times as needed to create multiple stream types.
 
 
-class UsersStream(ADPStream):
+class WorkersStream(ADPStream):
     """Define custom stream."""
 
-    name = "users"
-    path = "/users"
+    name = "workers"
+    path = "/hr/v2/workers"
     primary_keys: t.ClassVar[list[str]] = ["id"]
     replication_key = None
     # Optionally, you may also use `schema_filepath` in place of `schema`:
     # schema_filepath = SCHEMAS_DIR / "users.json"  # noqa: ERA001
+    #TODO: Add schema
     schema = th.PropertiesList(
         th.Property("name", th.StringType),
         th.Property(
@@ -49,18 +50,4 @@ class UsersStream(ADPStream):
             description="State name in ISO 3166-2 format",
         ),
         th.Property("zip", th.StringType),
-    ).to_dict()
-
-
-class GroupsStream(ADPStream):
-    """Define custom stream."""
-
-    name = "groups"
-    path = "/groups"
-    primary_keys: t.ClassVar[list[str]] = ["id"]
-    replication_key = "modified"
-    schema = th.PropertiesList(
-        th.Property("name", th.StringType),
-        th.Property("id", th.StringType),
-        th.Property("modified", th.DateTimeType),
     ).to_dict()
