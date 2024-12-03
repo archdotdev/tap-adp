@@ -8,9 +8,10 @@ from importlib import resources
 
 from singer_sdk.authenticators import OAuthAuthenticator
 from singer_sdk.helpers.jsonpath import extract_jsonpath
-from singer_sdk.pagination import BaseAPIPaginator  # noqa: TCH002
+from singer_sdk.pagination import BaseAPIPaginator 
 from singer_sdk.streams import RESTStream
 from tap_adp.authenticator import ADPAuthenticator
+from functools import cached_property
 
 if t.TYPE_CHECKING:
     import requests
@@ -24,118 +25,96 @@ SCHEMAS_DIR = resources.files(__package__) / "schemas"
 class ADPStream(RESTStream):
     """ADP stream class."""
 
-    # Update this value if necessary or override `parse_response`.
     records_jsonpath = "$[*]"
-
-    # Update this value if necessary or override `get_new_paginator`.
-    next_page_token_jsonpath = "$.next_page"  # noqa: S105
+    next_page_token_jsonpath = None
+    _LOG_REQUEST_METRIC_URLS: bool = True
 
     @property
     def url_base(self) -> str:
         """Return the API URL root, configurable via tap settings."""
         return "https://api.adp.com"
 
-    @property
-    #TODO make this a singleton
+    @cached_property
     def authenticator(self) -> ADPAuthenticator:
         """Return a new authenticator object."""
         return ADPAuthenticator.create_for_stream(self)
 
-    @property
-    def http_headers(self) -> dict:
-        """Return the http headers needed.
-
-        Returns:
-            A dictionary of HTTP headers.
-        """
-        # If not using an authenticator, you may also provide inline auth headers:
-        # headers["Private-Token"] = self.config.get("auth_token")  # noqa: ERA001
-        return {}
-
     def get_new_paginator(self) -> BaseAPIPaginator:
-        """Create a new pagination helper instance.
-
-        If the source API can make use of the `next_page_token_jsonpath`
-        attribute, or it contains a `X-Next-Page` header in the response
-        then you can remove this method.
-
-        If you need custom pagination that uses page numbers, "next" links, or
-        other approaches, please read the guide: https://sdk.meltano.com/en/v0.25.0/guides/pagination-classes.html.
-
-        Returns:
-            A pagination helper instance.
-        """
-        return super().get_new_paginator()
+        """Create a new paginator for ADP API pagination."""
+        return ADPPaginator(start_value=0, page_size=100)
 
     def get_url_params(
         self,
-        context: Context | None,  # noqa: ARG002
-        next_page_token: t.Any | None,  # noqa: ANN401
+        context: dict | None,
+        next_page_token: int | None,
     ) -> dict[str, t.Any]:
-        """Return a dictionary of values to be used in URL parameterization.
+        """Return a dictionary of URL parameters needed.
 
         Args:
-            context: The stream context.
-            next_page_token: The next page index or value.
+            context: Stream context or partition.
+            next_page_token: The value for the `skip` parameter.
 
         Returns:
             A dictionary of URL query parameters.
         """
-        params: dict = {}
-        if next_page_token:
-            params["page"] = next_page_token
-        if self.replication_key:
-            params["sort"] = "asc"
-            params["order_by"] = self.replication_key
+        params = {
+            "$top": 100,  # Set the desired page size
+            "$skip": next_page_token or 0,
+        }
         return params
-
-    def prepare_request_payload(
-        self,
-        context: Context | None,  # noqa: ARG002
-        next_page_token: t.Any | None,  # noqa: ARG002, ANN401
-    ) -> dict | None:
-        """Prepare the data payload for the REST API request.
-
-        By default, no payload will be sent (return None).
-
-        Args:
-            context: The stream context.
-            next_page_token: The next page index or value.
-
-        Returns:
-            A dictionary with the JSON body for a POST requests.
-        """
-        # TODO: Delete this method if no payload is required. (Most REST APIs.)
-        return None
 
     def parse_response(self, response: requests.Response) -> t.Iterable[dict]:
         """Parse the response and return an iterator of result records.
 
         Args:
-            response: The HTTP ``requests.Response`` object.
+            response: A raw `requests.Response`
 
         Yields:
-            Each record from the source.
+            One item for every item found in the response.
         """
-        # TODO: Parse response body and return a set of records.
-        yield from extract_jsonpath(
-            self.records_jsonpath,
-            input=response.json(parse_float=decimal.Decimal),
-        )
+        if response.status_code == 204 or not response.content:
+            # No content to parse
+            return iter([])
+        else:
+            yield from extract_jsonpath(
+                self.records_jsonpath,
+                input=response.json(parse_float=decimal.Decimal),
+            )
 
-    def post_process(
-        self,
-        row: dict,
-        context: Context | None = None,  # noqa: ARG002
-    ) -> dict | None:
-        """As needed, append or transform raw data to match expected structure.
+
+class ADPPaginator(BaseAPIPaginator[int]):
+    """Paginator for ADP API that uses 'top' and 'skip' parameters and stops on 204 response."""
+
+    def __init__(self, start_value: int, page_size: int, *args: t.Any, **kwargs: t.Any) -> None:
+        """Initialize the paginator with a starting value and page size.
 
         Args:
-            row: An individual record from the stream.
-            context: The stream context.
+            start_value: The initial skip value.
+            page_size: The number of records to retrieve per page.
+            args: Additional positional arguments.
+            kwargs: Additional keyword arguments.
+        """
+        super().__init__(start_value, *args, **kwargs)
+        self.page_size = page_size
+
+    def get_next(self, response: requests.Response) -> int | None:
+        """Calculate the next skip value.
+
+        Args:
+            response: The HTTP response received from the API.
 
         Returns:
-            The updated record dictionary, or ``None`` to skip the record.
+            The next skip value or `None` if pagination should stop.
         """
-        # TODO: Delete this method if not needed.
-        return row
+        return self.current_value + self.page_size
+
+    def has_more(self, response: requests.Response) -> bool:
+        """Determine if there are more pages to fetch.
+
+        Args:
+            response: The HTTP response received from the API.
+
+        Returns:
+            `True` if pagination should continue, `False` if a 204 No Content is received.
+        """
+        return response.status_code != 204

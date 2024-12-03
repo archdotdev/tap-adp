@@ -20,34 +20,7 @@ class WorkersStream(ADPStream):
 
     name = "workers"
     path = "/hr/v2/workers"
-    primary_keys: t.ClassVar[list[str]] = ["id"]
+    primary_keys = ["associateOID"]
     replication_key = None
-    # Optionally, you may also use `schema_filepath` in place of `schema`:
-    # schema_filepath = SCHEMAS_DIR / "users.json"  # noqa: ERA001
-    #TODO: Add schema
-    schema = th.PropertiesList(
-        th.Property("name", th.StringType),
-        th.Property(
-            "id",
-            th.StringType,
-            description="The user's system ID",
-        ),
-        th.Property(
-            "age",
-            th.IntegerType,
-            description="The user's age in years",
-        ),
-        th.Property(
-            "email",
-            th.StringType,
-            description="The user's email address",
-        ),
-        th.Property("street", th.StringType),
-        th.Property("city", th.StringType),
-        th.Property(
-            "state",
-            th.StringType,
-            description="State name in ISO 3166-2 format",
-        ),
-        th.Property("zip", th.StringType),
-    ).to_dict()
+    records_jsonpath = "$.workers[*]"
+    schema_filepath = SCHEMAS_DIR / "worker.json"  # noqa: ERA001

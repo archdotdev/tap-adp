@@ -39,7 +39,6 @@ class ADPAuthenticator(OAuthAuthenticator):
             key_file.flush()
 
             # Ensure the files are readable only by the owner (optional)
-            breakpoint()
             os.chmod(cert_file.name, 0o600)
             os.chmod(key_file.name, 0o600)
 
