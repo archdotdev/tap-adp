@@ -17,31 +17,29 @@ class TapADP(Tap):
     # TODO: Update this section with the actual config values you expect:
     config_jsonschema = th.PropertiesList(
         th.Property(
-            "auth_token",
+            "client_id",
             th.StringType,
             required=True,
-            secret=True,  # Flag config as protected.
-            title="Auth Token",
-            description="The token to authenticate against the API service",
+            secret=True,
+            description="The OAuth client ID for ADP API",
         ),
         th.Property(
-            "project_ids",
-            th.ArrayType(th.StringType),
-            required=True,
-            title="Project IDs",
-            description="Project IDs to replicate",
-        ),
-        th.Property(
-            "start_date",
-            th.DateTimeType,
-            description="The earliest record date to sync",
-        ),
-        th.Property(
-            "api_url",
+            "client_secret",
             th.StringType,
-            title="API URL",
-            default="https://api.mysample.com",
-            description="The url for the API service",
+            required=True,
+            secret=True,
+            description="The OAuth client secret for ADP API",
+        ),
+        th.Property(
+            "cert_public",
+            th.StringType,
+            description="Client certificate for ADP API",
+        ),
+        th.Property(
+            "cert_private",
+            th.StringType,
+            secret=True,
+            description="Client private key for ADP API",
         ),
         th.Property(
             "user_agent",
@@ -60,8 +58,7 @@ class TapADP(Tap):
             A list of discovered streams.
         """
         return [
-            streams.GroupsStream(self),
-            streams.UsersStream(self),
+            streams.WorkersStream(self),
         ]
 
 

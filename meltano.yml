@@ -1,13 +1,13 @@
 version: 1
 send_anonymous_usage_stats: true
-project_id: "tap-adp"
+project_id: tap-adp
 default_environment: test
 environments:
 - name: test
 plugins:
   extractors:
-  - name: "tap-adp"
-    namespace: "tap_adp"
+  - name: tap-adp
+    namespace: tap_adp
     pip_url: -e .
     capabilities:
     - state
@@ -17,15 +17,30 @@ plugins:
     - stream-maps
 
     # TODO: Declare settings and their types here:
-    settings:
-    - name: username
-      label: Username
-      description: The username to use for authentication
+    settings_group_validation:
+    - [username, password]
 
-    - name: password
-      kind: password
-      label: Password
-      description: The password to use for authentication
+    # TODO: Declare default configuration values here:
+    settings:
+    - name: client_id
+      label: Client ID
+      description: The OAuth client ID for ADP API
+      sensitive: true
+
+    - name: client_secret
+      kind: string
+      label: Client Secret
+      description: The OAuth client secret for ADP API
+      sensitive: true
+
+    - name: cert_public
+      label: Client Certificate
+      description: Client certificate for ADP API
+      sensitive: true
+
+    - name: cert_private
+      label: Client Private Key
+      description: Client private key for ADP API
       sensitive: true
 
     - name: start_date
@@ -34,10 +49,6 @@ plugins:
       description: Initial date to start extracting data from
 
     # TODO: Declare required settings here:
-    settings_group_validation:
-    - [username, password]
-
-    # TODO: Declare default configuration values here:
     config:
       start_date: '2010-01-01T00:00:00Z'
 
@@ -45,3 +56,12 @@ plugins:
   - name: target-jsonl
     variant: andyh1203
     pip_url: target-jsonl
+  - name: target-postgres
+    variant: meltanolabs
+    pip_url: meltanolabs-target-postgres
+    config:
+      host: localhost
+      port: 5432
+      database: postgres
+      user: postgres
+      password: postgres
