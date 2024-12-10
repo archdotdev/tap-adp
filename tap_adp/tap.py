@@ -5,7 +5,6 @@ from __future__ import annotations
 from singer_sdk import Tap
 from singer_sdk import typing as th  # JSON schema typing helpers
 
-# TODO: Import your custom stream types here:
 from tap_adp import streams
 
 
@@ -14,7 +13,6 @@ class TapADP(Tap):
 
     name = "tap-adp"
 
-    # TODO: Update this section with the actual config values you expect:
     config_jsonschema = th.PropertiesList(
         th.Property(
             "client_id",
@@ -59,6 +57,11 @@ class TapADP(Tap):
         """
         return [
             streams.WorkersStream(self),
+            streams.WorkerDemographicStream(self),
+            streams.PayDistributionStream(self),
+            streams.PayDataInputStream(self),
+            streams.PayrollInstructionStream(self),
+            streams.USTaxProfileStream(self),
         ]
 
 

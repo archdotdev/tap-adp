@@ -1,0 +1,2142 @@
+{
+    "type": [
+        "object",
+        "null"
+    ],
+    "properties": {
+        "associateOID": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "workerID": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "idValue": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            }
+        },
+        "person": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "genderCode": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "codeValue": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "shortName": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "longName": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                },
+                "disabledIndicator": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "preferredName": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "givenName": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "familyName1": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "middleName": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                },
+                "militaryClassificationCodes": {
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "customFieldGroup": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "codeFields": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "itemID": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "nameCode": {
+                                        "type": [
+                                            "object",
+                                            "null"
+                                        ],
+                                        "properties": {
+                                            "codeValue": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            },
+                                            "shortName": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "codeValue": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "shortName": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "stringFields": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "itemID": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "nameCode": {
+                                        "type": [
+                                            "object",
+                                            "null"
+                                        ],
+                                        "properties": {
+                                            "codeValue": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            },
+                                            "shortName": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "legalName": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "givenName": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "familyName1": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "formattedName": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "middleName": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "preferredSalutations": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "salutationCode": {
+                                        "type": [
+                                            "object",
+                                            "null"
+                                        ],
+                                        "properties": {
+                                            "codeValue": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            },
+                                            "shortName": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "nickName": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                },
+                "legalAddress": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "nameCode": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "codeValue": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "shortName": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "longName": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        },
+                        "lineOne": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "cityName": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "countrySubdivisionLevel1": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "subdivisionType": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "codeValue": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "shortName": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        },
+                        "countryCode": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "postalCode": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "lineTwo": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "countrySubdivisionLevel2": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "subdivisionType": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "codeValue": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "shortName": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "ethnicityCode": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "codeValue": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "shortName": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "longName": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                },
+                "raceCode": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "identificationMethodCode": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "codeValue": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "shortName": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        },
+                        "codeValue": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "shortName": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "longName": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                },
+                "communication": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "landlines": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "itemID": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "nameCode": {
+                                        "type": [
+                                            "object",
+                                            "null"
+                                        ],
+                                        "properties": {
+                                            "codeValue": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            },
+                                            "shortName": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "countryDialing": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "areaDialing": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "dialNumber": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "formattedNumber": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "access": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "mobiles": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "itemID": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "nameCode": {
+                                        "type": [
+                                            "object",
+                                            "null"
+                                        ],
+                                        "properties": {
+                                            "codeValue": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            },
+                                            "shortName": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "countryDialing": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "areaDialing": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "dialNumber": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "formattedNumber": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "access": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "emails": {
+                            "type": [
+                                "array",
+                                "null"
+                            ],
+                            "items": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "nameCode": {
+                                        "type": [
+                                            "object",
+                                            "null"
+                                        ],
+                                        "properties": {
+                                            "codeValue": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            },
+                                            "shortName": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "emailUri": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "notificationIndicator": {
+                                        "type": [
+                                            "boolean",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "maritalStatusCode": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "effectiveDate": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "codeValue": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "shortName": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                },
+                "disabilityTypeCodes": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "codeValue": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "longName": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "militaryStatusCode": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "codeValue": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "shortName": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "longName": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                },
+                "tobaccoUserIndicator": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "socialInsurancePrograms": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "nameCode": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "codeValue": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "shortName": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            },
+                            "coveredIndicator": {
+                                "type": [
+                                    "boolean",
+                                    "null"
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "workerDates": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "originalHireDate": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "terminationDate": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            }
+        },
+        "workerStatus": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "statusCode": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "properties": {
+                        "codeValue": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "businessCommunication": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "mobiles": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "itemID": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "nameCode": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "codeValue": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "shortName": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            },
+                            "countryDialing": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "areaDialing": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "dialNumber": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "formattedNumber": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "access": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "emails": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "itemID": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "nameCode": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "codeValue": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "shortName": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            },
+                            "emailUri": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "notificationIndicator": {
+                                "type": [
+                                    "boolean",
+                                    "null"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "landlines": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "itemID": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "nameCode": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "codeValue": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "shortName": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            },
+                            "countryDialing": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "areaDialing": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "dialNumber": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "formattedNumber": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "workAssignments": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "items": {
+                "type": [
+                    "object",
+                    "null"
+                ],
+                "properties": {
+                    "itemID": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "primaryIndicator": {
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "hireDate": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "actualStartDate": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "assignmentStatus": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "statusCode": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "codeValue": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "shortName": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "longName": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            },
+                            "effectiveDate": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "reasonCode": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "codeValue": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "shortName": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "longName": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "workerTypeCode": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "codeValue": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "shortName": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        }
+                    },
+                    "workerGroups": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "items": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "nameCode": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "properties": {
+                                        "codeValue": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "longName": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "groupCode": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "properties": {
+                                        "codeValue": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "shortName": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "longName": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "jobCode": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "codeValue": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "shortName": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "longName": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        }
+                    },
+                    "jobTitle": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "occupationalClassifications": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "items": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "nameCode": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "properties": {
+                                        "codeValue": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "shortName": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "classificationCode": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "properties": {
+                                        "codeValue": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "shortName": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "longName": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "wageLawCoverage": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "wageLawNameCode": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "codeValue": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "longName": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            },
+                            "coverageCode": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "codeValue": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "shortName": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "positionID": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "homeOrganizationalUnits": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "items": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "nameCode": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "properties": {
+                                        "codeValue": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "shortName": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "longName": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "typeCode": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "properties": {
+                                        "codeValue": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "shortName": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "assignedOrganizationalUnits": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "items": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "nameCode": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "properties": {
+                                        "codeValue": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "shortName": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "longName": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "typeCode": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "properties": {
+                                        "codeValue": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "shortName": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "homeWorkLocation": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "address": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "lineOne": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "cityName": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "countrySubdivisionLevel1": {
+                                        "type": [
+                                            "object",
+                                            "null"
+                                        ],
+                                        "properties": {
+                                            "subdivisionType": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            },
+                                            "codeValue": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            },
+                                            "shortName": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "countryCode": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "postalCode": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "lineTwo": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            },
+                            "nameCode": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "codeValue": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "longName": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "shortName": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "payCycleCode": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "codeValue": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "shortName": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        }
+                    },
+                    "standardPayPeriodHours": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "hoursQuantity": {
+                                "type": [
+                                    "integer",
+                                    "null"
+                                ]
+                            }
+                        }
+                    },
+                    "payrollProcessingStatusCode": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "shortName": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        }
+                    },
+                    "payrollGroupCode": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "payrollFileNumber": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "customFieldGroup": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "stringFields": {
+                                "type": [
+                                    "array",
+                                    "null"
+                                ],
+                                "items": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "properties": {
+                                        "itemID": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "nameCode": {
+                                            "type": [
+                                                "object",
+                                                "null"
+                                            ],
+                                            "properties": {
+                                                "codeValue": {
+                                                    "type": [
+                                                        "string",
+                                                        "null"
+                                                    ]
+                                                },
+                                                "shortName": {
+                                                    "type": [
+                                                        "string",
+                                                        "null"
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        "stringValue": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        }
+                                    }
+                                }
+                            },
+                            "codeFields": {
+                                "type": [
+                                    "array",
+                                    "null"
+                                ],
+                                "items": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "properties": {
+                                        "itemID": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "nameCode": {
+                                            "type": [
+                                                "object",
+                                                "null"
+                                            ],
+                                            "properties": {
+                                                "codeValue": {
+                                                    "type": [
+                                                        "string",
+                                                        "null"
+                                                    ]
+                                                },
+                                                "shortName": {
+                                                    "type": [
+                                                        "string",
+                                                        "null"
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        "codeValue": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "shortName": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "customCountryInputs": {
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    },
+                    "seniorityDate": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "reportsTo": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "items": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "positionID": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "associateOID": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "workerID": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "properties": {
+                                        "idValue": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "schemeCode": {
+                                            "type": [
+                                                "object",
+                                                "null"
+                                            ],
+                                            "properties": {
+                                                "codeValue": {
+                                                    "type": [
+                                                        "string",
+                                                        "null"
+                                                    ]
+                                                },
+                                                "shortName": {
+                                                    "type": [
+                                                        "string",
+                                                        "null"
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "reportsToWorkerName": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "properties": {
+                                        "formattedName": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "assignedWorkLocations": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "items": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "address": {
+                                    "type": [
+                                        "object",
+                                        "null"
+                                    ],
+                                    "properties": {
+                                        "nameCode": {
+                                            "type": [
+                                                "object",
+                                                "null"
+                                            ],
+                                            "properties": {
+                                                "codeValue": {
+                                                    "type": [
+                                                        "string",
+                                                        "null"
+                                                    ]
+                                                },
+                                                "shortName": {
+                                                    "type": [
+                                                        "string",
+                                                        "null"
+                                                    ]
+                                                },
+                                                "longName": {
+                                                    "type": [
+                                                        "string",
+                                                        "null"
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        "lineOne": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "cityName": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "countrySubdivisionLevel1": {
+                                            "type": [
+                                                "object",
+                                                "null"
+                                            ],
+                                            "properties": {
+                                                "subdivisionType": {
+                                                    "type": [
+                                                        "string",
+                                                        "null"
+                                                    ]
+                                                },
+                                                "codeValue": {
+                                                    "type": [
+                                                        "string",
+                                                        "null"
+                                                    ]
+                                                },
+                                                "shortName": {
+                                                    "type": [
+                                                        "string",
+                                                        "null"
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        "countryCode": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "postalCode": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "countrySubdivisionLevel2": {
+                                            "type": [
+                                                "object",
+                                                "null"
+                                            ],
+                                            "properties": {
+                                                "subdivisionType": {
+                                                    "type": [
+                                                        "string",
+                                                        "null"
+                                                    ]
+                                                },
+                                                "codeValue": {
+                                                    "type": [
+                                                        "string",
+                                                        "null"
+                                                    ]
+                                                },
+                                                "shortName": {
+                                                    "type": [
+                                                        "string",
+                                                        "null"
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "terminationDate": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "fullTimeEquivalenceRatio": {
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    }
+                }
+            }
+        },
+        "customFieldGroup": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "codeFields": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "itemID": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "nameCode": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "codeValue": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "shortName": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "dateFields": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "itemID": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "nameCode": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "codeValue": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "shortName": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "longName": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            },
+                            "dateValue": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "stringFields": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "itemID": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "nameCode": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "codeValue": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "shortName": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            },
+                            "stringValue": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "photos": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "items": {
+                "type": [
+                    "object",
+                    "null"
+                ],
+                "properties": {
+                    "links": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "items": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "href": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "mediaType": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "method": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,1906 @@
+{
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "queryCriteria": {
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "/data/eventContext": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "/payrollGroupCode": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "codeList": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "codeListTitle": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "listItems": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "codeValue": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "shortName": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "readOnly": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "optional": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "hidden": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "shortLabelName": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "/payrollProcessingJobID": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "readOnly": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "optional": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "hidden": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "shortLabelName": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/data/transforms": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "/payDataInput/payeePayInputs/associateOID": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payNumber": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payrollFileNumber": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/cancelAutomaticPayIndicator": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/payAllocation/allocationID": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "codeList": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "codeListTitle": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "listItems": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "valueDescription": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "codeValue": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "longName": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/payAllocation/allocationTypeCode": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "codeList": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "codeListTitle": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "listItems": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "valueDescription": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "foreignKey": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "codeValue": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "shortName": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "longName": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/earningInputs/earningCode": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "codeList": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "listItems": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "codeValue": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "shortName": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "valueDescription": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "foreignKey": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "longName": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/earningInputs/rateCode": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/earningInputs/rate": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/earningInputs/rate/rateValue": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "pattern": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/earningInputs/rate/currencyCode": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/earningInputs/numberOfHours": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/earningInputs/earningsAmount/amountValue": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "pattern": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/earningInputs/earningsAmount/currencyCode": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/earningInputs/configurationTags/tagCode": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/earningInputs/configurationTags/tagValues": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "minItems": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "maxItems": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "uniqueItems": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "default": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "valueDescription": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "codeValue": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "shortName": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/codedHoursEarningInputs/hoursEarningCode/codeValue": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "codeList": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "codeListTitle": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "listItems": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "valueDescription": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "foreignKey": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "codeValue": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "longName": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/codedHoursEarningInputs/rate/rateValue": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "longLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "pattern": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/codedHoursEarningInputs/rate/currencyCode": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/codedHoursEarningInputs/numberOfHours": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/codedHoursEarningInputs/earningsAmount/amountValue": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "pattern": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/codedHoursEarningInputs/earningsAmount/currencyCode": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/memoInputs/memoCode": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "codeList": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "codeListTitle": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "listItems": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "valueDescription": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "foreignKey": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "codeValue": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "longName": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/memoInputs/memoAmount/amountValue": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "pattern": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/reportableEarningAndBenefitInputs/reportableEarningAndBenefitCode": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "codeList": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "listItems": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "codeValue": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "shortName": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/reportableEarningAndBenefitInputs/reportableEarningAndBenefitAmount/amountValue": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "longLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "pattern": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/reportableEarningAndBenefitInputs/reportableEarningAndBenefitAmount/currencyCode": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/deductionInputs/deductionCode/codeValue": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "codeList": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "codeListTitle": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "listItems": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "valueDescription": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "foreignKey": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "codeValue": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "shortName": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "links": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "href": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "title": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "mediaType": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "method": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/deductionInputs/deductionRate/rateValue": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "pattern": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/deductionInputs/deductionRate/currencyCode": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/deductionInputs/deductionRate/baseUnitCode/codeValue": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/deductionInputs/configurationTags/tagCode": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/deductionInputs/configurationTags/tagType": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "dataType": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/deductionInputs/configurationTags/tagValues": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "minItems": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "maxItems": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "uniqueItems": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "default": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/taxInputs/taxCycleCode/codeValue": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "codeList": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "codeListTitle": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "listItems": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "valueDescription": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "codeValue": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "shortName": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/reimbursementInputs/reimbursementCode/codeValue": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "codeList": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "codeListTitle": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "listItems": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "valueDescription": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "foreignKey": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "codeValue": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "shortName": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/reimbursementInputs/reimbursementAmount/amountValue": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "pattern": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/reimbursementInputs/reimbursementAmount/currencyCode": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/reimbursementInputs/configurationTags/tagCode": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "hidden": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "shortLabelName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/reimbursementInputs/configurationTags/tagType": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "readOnly": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "optional": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "dataType": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "/payDataInput/payeePayInputs/payrollProfilePayInputs/payInputs/reimbursementInputs/configurationTags/tagValues": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "minItems": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "maxItems": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "uniqueItems": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "default": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
