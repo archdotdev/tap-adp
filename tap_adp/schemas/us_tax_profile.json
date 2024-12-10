@@ -1,0 +1,422 @@
+{
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "payrollFileNumber": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "payrollGroupCode": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "codeValue": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "longName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "itemID": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "usFederalTaxInstruction": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "federalIncomeTaxInstruction": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "taxWithholdingStatus": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "statusCode": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "codeValue": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "shortName": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "reasonCode": {
+                  "type": [
+                    "object",
+                    "null"
+                  ]
+                },
+                "effectiveDate": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "taxFilingStatusCode": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "codeValue": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "longName": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "taxWithholdingAllowanceQuantity": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "additionalTaxPercentage": {
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "additionalTaxAmount": {
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "overrideTaxPercentage": {
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "overrideTaxAmount": {
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "taxAllowances": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "allowanceTypeCode": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "codeValue": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "taxAllowanceAmount": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "amountValue": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "additionalIncomeAmount": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "amountValue": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "socialSecurityTaxInstruction": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "taxWithholdingStatus": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "statusCode": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "codeValue": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "shortName": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "reasonCode": {
+                  "type": [
+                    "object",
+                    "null"
+                  ]
+                },
+                "effectiveDate": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "medicareTaxInstruction": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "taxWithholdingStatus": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "statusCode": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "codeValue": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "shortName": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "reasonCode": {
+                  "type": [
+                    "object",
+                    "null"
+                  ]
+                },
+                "effectiveDate": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "federalUnemploymentTaxInstruction": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "taxWithholdingStatus": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "statusCode": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "codeValue": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "shortName": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "reasonCode": {
+                  "type": [
+                    "object",
+                    "null"
+                  ]
+                },
+                "effectiveDate": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "form1099Instruction": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "distributionCodes": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "shortName": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "longName": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            },
+            "totalDistributionIndicator": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "individualRetirementAccountIndicator": {
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "simplifiedEmployeePensionAccountIndicator": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          }
+        },
+        "interimW2IssuedIndicator": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "statutoryWorkerIndicator": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "qualifiedPensionPlanCoverageIndicator": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "multipleJobIndicator": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,335 @@
+{
+    "type": [
+        "object",
+        "null"
+    ],
+    "properties": {
+        "itemID": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "requestedStartDate": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "distributionStatusCode": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "codeValue": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "shortName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            }
+        },
+        "distributionInstructions": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "items": {
+                "type": [
+                    "object",
+                    "null"
+                ],
+                "properties": {
+                    "itemID": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "prenoteIndicator": {
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "bonusOnlyIndicator": {
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "prenote": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "prenoteOptionCode": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "codeValue": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            },
+                            "prenoteDate": {
+                                "type": "null"
+                            },
+                            "prenoteDescription": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        }
+                    },
+                    "instructionStatusCode": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "codeValue": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "shortName": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        }
+                    },
+                    "depositAccount": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "financialParty": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "routingTransitID": {
+                                        "type": [
+                                            "object",
+                                            "null"
+                                        ],
+                                        "properties": {
+                                            "idValue": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "financialAccount": {
+                                "type": [
+                                    "object",
+                                    "null"
+                                ],
+                                "properties": {
+                                    "accountNumber": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "typeCode": {
+                                        "type": [
+                                            "object",
+                                            "null"
+                                        ],
+                                        "properties": {
+                                            "codeValue": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            },
+                                            "shortName": {
+                                                "type": [
+                                                    "string",
+                                                    "null"
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "distributionAmount": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "amountValue": {
+                                "type": [
+                                    "number",
+                                    "null"
+                                ]
+                            }
+                        }
+                    },
+                    "remainingBalanceIndicator": {
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    }
+                }
+            }
+        },
+        "actions": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "items": {
+                "type": [
+                    "object",
+                    "null"
+                ],
+                "properties": {
+                    "operationID": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "canonicalUri": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "actionTypeCode": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "confirmationRequiredIndicator": {
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "defaultIndicator": {
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "attestation": {
+                        "type": [
+                            "object",
+                            "null"
+                        ],
+                        "properties": {
+                            "actionBlockIndicator": {
+                                "type": [
+                                    "boolean",
+                                    "null"
+                                ]
+                            },
+                            "messageTxt": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        }
+                    },
+                    "links": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "items": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "href": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "rel": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "title": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "method": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "payrollGroupCode": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "properties": {
+                "codeValue": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "shortName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            }
+        },
+        "payrollFileNumber": {
+            "type": [
+                "string",
+                "null"
+            ]
+        }
+    }
+}

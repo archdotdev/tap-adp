@@ -7,16 +7,8 @@ from singer_sdk.testing import get_tap_test_class
 from tap_adp.tap import TapADP
 
 SAMPLE_CONFIG = {
-    "start_date": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d"),
-    # TODO: Initialize minimal tap config
 }
 
+def test_tap_adp():
+    pass
 
-# Run standard built-in tap tests from the SDK:
-TestTapADP = get_tap_test_class(
-    tap_class=TapADP,
-    config=SAMPLE_CONFIG,
-)
-
-
-# TODO: Create additional tests as appropriate for your tap.

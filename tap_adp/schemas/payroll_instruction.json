@@ -1,0 +1,132 @@
+{
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "workAssignmentStatus": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "effectiveDateDate": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "codeValue": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "longName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "generalDeductionInstructions": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "itemID": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "deductionStartDate": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "deductionCode": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "codeValue": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "shortName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "deductionRate": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "rateValue": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          },
+          "inactiveIndicator": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "payrollGroupCode": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "codeValue": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "shortName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "payrollFileNumber": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "payrollAgreementID": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

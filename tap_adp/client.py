@@ -18,7 +18,6 @@ if t.TYPE_CHECKING:
     from singer_sdk.helpers.types import Context
 
 
-# TODO: Delete this is if not using json files for schema definition
 SCHEMAS_DIR = resources.files(__package__) / "schemas"
 
 
@@ -27,6 +26,7 @@ class ADPStream(RESTStream):
 
     records_jsonpath = "$[*]"
     next_page_token_jsonpath = None
+    replication_key = None
     _LOG_REQUEST_METRIC_URLS: bool = True
 
     @property
@@ -38,30 +38,6 @@ class ADPStream(RESTStream):
     def authenticator(self) -> ADPAuthenticator:
         """Return a new authenticator object."""
         return ADPAuthenticator.create_for_stream(self)
-
-    def get_new_paginator(self) -> BaseAPIPaginator:
-        """Create a new paginator for ADP API pagination."""
-        return ADPPaginator(start_value=0, page_size=100)
-
-    def get_url_params(
-        self,
-        context: dict | None,
-        next_page_token: int | None,
-    ) -> dict[str, t.Any]:
-        """Return a dictionary of URL parameters needed.
-
-        Args:
-            context: Stream context or partition.
-            next_page_token: The value for the `skip` parameter.
-
-        Returns:
-            A dictionary of URL query parameters.
-        """
-        params = {
-            "$top": 100,  # Set the desired page size
-            "$skip": next_page_token or 0,
-        }
-        return params
 
     def parse_response(self, response: requests.Response) -> t.Iterable[dict]:
         """Parse the response and return an iterator of result records.
@@ -80,6 +56,25 @@ class ADPStream(RESTStream):
                 self.records_jsonpath,
                 input=response.json(parse_float=decimal.Decimal),
             )
+
+
+class PaginatedADPStream(ADPStream):
+
+    def get_new_paginator(self) -> BaseAPIPaginator:
+        """Create a new paginator for ADP API pagination."""
+        return ADPPaginator(start_value=0, page_size=100)
+
+    def get_url_params(
+        self,
+        context: dict | None,
+        next_page_token: int | None,
+    ) -> dict[str, t.Any]:
+        params = super().get_url_params(context, next_page_token)
+        params = {
+            "$top": 100,  # Set the desired page size
+            "$skip": next_page_token or 0,
+        }
+        return params
 
 
 class ADPPaginator(BaseAPIPaginator[int]):
