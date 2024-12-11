@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+from http import HTTPStatus
 import typing as t
 from importlib import resources
 
+import requests
 from singer_sdk import typing as th  # JSON Schema typing helpers
 
 from tap_adp.client import ADPStream, PaginatedADPStream
@@ -51,6 +53,20 @@ class PayDistributionStream(ADPStream):
     schema_filepath = SCHEMAS_DIR / "pay_distribution.json"
     parent_stream_type=WorkersStream
 
+    def validate_response(self, response):
+        try:
+            response_json = response.json()
+        except requests.JSONDecodeError:
+            response_json = None
+        if (
+            response_json is not None and
+            response.status_code == HTTPStatus.INTERNAL_SERVER_ERROR
+            and response_json.get("confirmMessage", {}).get("resourceMessages", [{}])[0].get("processMessages", [{}])[0].get("processMessageID", {}).get("idValue") == "Exception in the requestHTTP 500 Internal Server Error"
+        ):
+            msg = f"No pay distribution found for path: {response.request.path_url}"
+            self.logger.warning(msg)
+            return
+        super().validate_response(response)
 
 class PayrollInstructionStream(ADPStream):
     """
@@ -93,3 +109,18 @@ class USTaxProfileStream(ADPStream):
     records_jsonpath = "$.usTaxProfiles[*]"
     schema_filepath = SCHEMAS_DIR / "us_tax_profile.json"
     parent_stream_type=WorkersStream
+
+    def validate_response(self, response):
+        try:
+            response_json = response.json()
+        except requests.JSONDecodeError:
+            response_json = None
+        if (
+            response_json is not None and
+            response.status_code == HTTPStatus.BAD_REQUEST
+            and response_json.get("confirmMessage", {}).get("resourceMessages", [{}])[0].get("processMessages", [{}])[0].get("userMessage", {}).get("messageTxt") == "Records are not available,  As of Date is invalid."
+        ):
+            msg = f"No US tax profile found for path: {response.request.path_url}"
+            self.logger.warning(msg)
+            return
+        super().validate_response(response)
