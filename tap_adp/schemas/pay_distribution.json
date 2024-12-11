@@ -86,7 +86,10 @@
                                 }
                             },
                             "prenoteDate": {
-                                "type": "null"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             },
                             "prenoteDescription": {
                                 "type": [
