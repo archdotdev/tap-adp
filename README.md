@@ -47,6 +47,27 @@ environment variable is set either in the terminal context or in the `.env` file
 
 Provide client ID, client secret, private and public certificates in their respective config options.
 
+#### Troubleshooting
+
+If you get an error like the below, HTTP 403:
+
+```json
+{"confirmMessage":{"confirmMessageID":{"idValue":"1A5D7EC6-F59D-BDE1-01BD-619831CBAD70","schemeName":"confirmMessageID","schemeAgencyName":"WFN"},"createDateTime":"2024-12-11T19:51:24.011+0000","requestReceiptDateTime":"2024-12-11T19:51:24.011+0000","protocolStatusCode":{"codeValue":"403","shortName":"403"},"requestStatusCode":{"codeValue":"failed"},"requestMethodCode":{"codeValue":"GET"},"requestLink":{"href":"https://pulsar-marketplace-prod.es.oneadp.com/recruitment/metaservices/jobrequisitions/staffing/v1/job-requisitions","rel":"related","method":"GET"},"resourceMessages":[{"resourceMessageID":{"idValue":"jobrequisitions/staffing/v1/job-requisitions","schemeName":"resourceMessageID","schemeAgencyName":"WFN"},"processMessages":[{"resourceStatusCode":{"codeValue":"error"},"userMessage":{"messageTxt":"Forbidden - No access for given employee ID!!!"}}]}]},"skipMetadataEnvelope":false,"statusFailure":false,"statusSuccess":false,"requestKeys":[]}
+```
+
+or:
+
+```json
+{"confirmMessage":{"confirmMessageID":{"idValue":"DB5DC903-0258-2CC1-2027-13830CA07E87","schemeName":"confirmMessageID","schemeAgencyName":"WFN"},"createDateTime":"2024-12-11T19:52:24.659+0000","requestReceiptDateTime":"2024-12-11T19:52:24.659+0000","protocolStatusCode":{"codeValue":"403","shortName":"403"},"requestStatusCode":{"codeValue":"failed"},"requestMethodCode":{"codeValue":"GET"},"requestLink":{"href":"https://pulsar-marketplace-prod.es.oneadp.com/recruitment/metaservices/jobapplications/staffing/v2/job-applications","rel":"related","method":"GET"},"resourceMessages":[{"resourceMessageID":{"idValue":"jobapplications/staffing/v2/job-applications","schemeName":"resourceMessageID","schemeAgencyName":"WFN"},"processMessages":[{"resourceStatusCode":{"codeValue":"error"},"userMessage":{"messageTxt":"Forbidden - WFN-REC-MarketPlace-API User doesn't have access to get applications"}}]}]},"statusFailure":false,"statusSuccess":false,"requestKeys":[],"skipMetadataEnvelope":false}
+```
+
+containing an error similar to `"Forbidden - No access for given employee ID!!!"` or `"Forbidden - WFN-REC-MarketPlace-API User doesn't have access to get applications"`, this indicates a permissions issue with the specific user account being used to access the API (instead of an issue with the API project's scopes). We think the steps to resolve this would be something like:
+1. In ADP Workforce Now, go to Setup > Security > Security Access > Profiles.
+1. Select the API Central project profile.
+1. Find and expand the appropriate section in the permissions list.
+1. Enable the permissions for the endpoints that are failing.
+1. Save your changes.
+
 ## Usage
 
 You can easily run `tap-adp` by itself or in a pipeline using [Meltano](https://meltano.com/).
