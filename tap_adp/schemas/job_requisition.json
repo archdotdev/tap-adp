@@ -1,0 +1,822 @@
+{
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "itemID": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "postingInstructions": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "nameCode": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "codeValue": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "longName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "postingChannel": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "channelID": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "nameCode": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "codeValue": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "shortName": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "longName": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "internetAddress": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "uri": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "externalIndicator": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "defaultIndicator": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            }
+          },
+          "internalIndicator": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "resumeRequiredIndicator": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "postDate": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "expireDate": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "applicationMethods": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "contact": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "personName": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "nameCode": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "codeValue": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "shortName": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          }
+                        },
+                        "formattedName": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    },
+                    "communication": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "emails": {
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "properties": {
+                              "nameCode": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "properties": {
+                                  "codeValue": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "shortName": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "emailUri": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "validityAttestationIndicator": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "links": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "href": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "rel": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "supportedLocaleCodes": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "clientRequisitionID": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "requisitionStatusCode": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "effectiveDate": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "codeValue": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "shortName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "job": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "jobCode": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "codeValue": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "longName": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "shortName": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "jobTitle": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "occupationalClassifications": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "classificationCode": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "codeValue": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "shortName": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "longName": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requisitionLocations": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "itemID": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "nameCode": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "codeValue": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "shortName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "longName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "address": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "lineOne": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "lineTwo": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "cityName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "countrySubdivisionLevel1": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "codeValue": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "countryCode": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "postalCode": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "compensationVisibleIndicator": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "locationVisibleIndicator": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "organizationalUnits": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "itemID": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "nameCode": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "codeValue": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "shortName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "typeCode": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "codeValue": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "shortName": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "lieDetectorAcknowledgementIndicator": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "companyName": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "payGradeRange": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "minimumRate": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "amountValue": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "currencyCode": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "unitCode": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "codeValue": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "shortName": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "maximumRate": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "amountValue": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "currencyCode": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "unitCode": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "codeValue": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "shortName": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "workerTypeCode": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "codeValue": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "shortName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "projectedStartDate": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "openingsQuantity": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "openingsFilledQuantity": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "visibleToJobSeekerIndicator": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "evergreenIndicator": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "internalIndicator": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "externalIndicator": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "workedInCountry": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "openingsNewPositionQuantity": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "requisitionReasonCode": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "codeValue": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "longName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "hiringManager": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "associateOID": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "workerID": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "idValue": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "personName": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "givenName": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "familyName1": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "formattedName": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
