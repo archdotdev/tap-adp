@@ -46,6 +46,80 @@
             "null"
           ]
         },
+        "hiringManager": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "associateOID": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "workerID": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "idValue": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "personName": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "nameCode": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "codeValue": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "shortName": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "givenName": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "familyName1": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "formattedName": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        },
         "recruiter": {
           "type": [
             "object",
@@ -77,6 +151,18 @@
                       ]
                     }
                   }
+                },
+                "givenName": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "familyName1": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "formattedName": {
                   "type": [
@@ -403,6 +489,12 @@
               ],
               "properties": {
                 "lineOne": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "lineTwo": {
                   "type": [
                     "string",
                     "null"
