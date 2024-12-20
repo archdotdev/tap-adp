@@ -62,6 +62,8 @@ class TapADP(Tap):
             streams.PayDataInputStream(self),
             streams.PayrollInstructionStream(self),
             streams.USTaxProfileStream(self),
+            streams.JobRequisitionStream(self),
+            streams.JobApplicationStream(self),
         ]
 
 

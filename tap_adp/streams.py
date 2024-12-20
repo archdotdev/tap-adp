@@ -124,3 +124,25 @@ class USTaxProfileStream(ADPStream):
             self.logger.warning(msg)
             return
         super().validate_response(response)
+
+class JobRequisitionStream(PaginatedADPStream):
+    """
+    Docs: https://developers.adp.com/build/api-explorer/hcm-offrg-wfn/hcm-offrg-wfn-staffing-job-requisitions-v1-job-requisitions
+    """
+
+    name = "job_requisition"
+    path = "/staffing/v1/job-requisitions"
+    primary_keys = ["itemID"]
+    records_jsonpath = "$.jobRequisitions[*]"
+    schema_filepath = SCHEMAS_DIR / "job_requisition.json"
+
+class JobApplicationStream(PaginatedADPStream):
+    """
+    Docs: https://developers.adp.com/build/api-explorer/hcm-offrg-wfn/hcm-offrg-wfn-staffing-job-applications-v2-job-applications
+    """
+
+    name = "job_application"
+    path = "/staffing/v2/job-applications"
+    primary_keys = ["itemID"]
+    records_jsonpath = "$.jobApplications[*]"
+    schema_filepath = SCHEMAS_DIR / "job_application.json"
