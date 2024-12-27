@@ -113,3 +113,29 @@ class ADPPaginator(BaseAPIPaginator[int]):
             `True` if pagination should continue, `False` if a 204 No Content is received.
         """
         return response.status_code != 204
+    
+    def response_error_message(self, response: requests.Response) -> str:
+        """Build error message for invalid http statuses.
+
+        WARNING - Override this method when the URL path may contain secrets or PII
+
+        Args:
+            response: A :class:`requests.Response` object.
+
+        Returns:
+            str: The error message
+        """
+        full_path = urlparse(response.url).path or self.path
+        error_type = (
+            "Client"
+            if HTTPStatus.BAD_REQUEST
+            <= response.status_code
+            < HTTPStatus.INTERNAL_SERVER_ERROR
+            else "Server"
+        )
+
+        return (
+            f"{response.status_code} {error_type} Error: "
+            f"{response.reason} for path: {full_path}."
+            f"Response: {response.json()}"
+        )
