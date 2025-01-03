@@ -110,6 +110,15 @@ class USTaxProfileStream(ADPStream):
     schema_filepath = SCHEMAS_DIR / "us_tax_profile.json"
     parent_stream_type=WorkersStream
 
+    # We're getting inconsistent 401 and 404 errors, not sure why.
+    extra_retry_statuses = [
+        HTTPStatus.TOO_MANY_REQUESTS,
+        HTTPStatus.NOT_FOUND,
+        HTTPStatus.UNAUTHORIZED,
+    ]
+
+
+
     def validate_response(self, response):
         try:
             response_json = response.json()

@@ -57,6 +57,20 @@ class ADPStream(RESTStream):
                 input=response.json(parse_float=decimal.Decimal),
             )
 
+    def response_error_message(self, response: requests.Response) -> str:
+        """
+        Additional info for debugging purposes. Authorization is included in Headers,
+        but Body is safe to print out in logs.
+        """
+        truncated_request_body = f"{response.request.body}"[:10000]
+        truncated_response_content = f"{response.content}"[:10000]
+        return (
+            f"{super().response_error_message(response)} "
+            f"with request URL {response.request.url} "
+            f"and with request body {truncated_request_body} "
+            f"and with response content {truncated_response_content}"
+        )
+
 
 class PaginatedADPStream(ADPStream):
 
