@@ -1,0 +1,134 @@
+{
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "questionnaireID": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "questionnaireTitle": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "questionSections": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "questions": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "questionID": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "questionText": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "questionDescription": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "requiredIndicator": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "disabledIndicator": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "requiredExternalIndicator": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "disabledExternalIndicator": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "knockoutIndicator": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "knockoutRules": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "ruleID": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "minValue": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "operatorType": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "_sdc_requisition_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}
