@@ -64,6 +64,7 @@ class TapADP(Tap):
             streams.USTaxProfileStream(self),
             streams.JobRequisitionStream(self),
             streams.JobApplicationStream(self),
+            streams.QuestionnaireStream(self),
         ]
 
 

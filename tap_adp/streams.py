@@ -145,6 +145,11 @@ class JobRequisitionStream(PaginatedADPStream):
     records_jsonpath = "$.jobRequisitions[*]"
     schema_filepath = SCHEMAS_DIR / "job_requisition.json"
 
+    def get_child_context(self, record, context):
+        return {
+            "_sdc_requisition_id": record["itemID"]
+        }
+
 class JobApplicationStream(PaginatedADPStream):
     """
     Docs: https://developers.adp.com/build/api-explorer/hcm-offrg-wfn/hcm-offrg-wfn-staffing-job-applications-v2-job-applications
@@ -155,3 +160,15 @@ class JobApplicationStream(PaginatedADPStream):
     primary_keys = ["itemID"]
     records_jsonpath = "$.jobApplications[*]"
     schema_filepath = SCHEMAS_DIR / "job_application.json"
+
+class QuestionnaireStream(ADPStream):
+    """
+    Docs: https://developers.adp.com/build/api-explorer/hcm-offrg-wfn/hcm-offrg-wfn-staffing-recruiting-questionnaires-v3-recruiting-questionnaires
+    """
+
+    name = "questionnaire"
+    path = "/staffing/v3/work-fulfillment/recruiting-questionnaires/{_sdc_requisition_id}"
+    primary_keys = ["questionnaireID"]
+    records_jsonpath = "$"
+    schema_filepath = SCHEMAS_DIR / "questionnaire.json"
+    parent_stream_type=JobRequisitionStream
