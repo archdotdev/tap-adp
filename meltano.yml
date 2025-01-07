@@ -48,6 +48,9 @@ plugins:
       label: Start Date
       description: Initial date to start extracting data from
 
+    select:
+    - 'us_tax_profile.*'
+
   loaders:
   - name: target-jsonl
     variant: andyh1203

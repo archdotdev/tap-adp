@@ -23,6 +23,11 @@ class WorkersStream(PaginatedADPStream):
     records_jsonpath = "$.workers[*]"
     schema_filepath = SCHEMAS_DIR / "worker.json"
 
+    def http_headers(self) -> dict:
+        headers = super().http_headers
+        headers["Accept"] = "application/json;masked=false"
+        return headers
+
     def get_child_context(self, record, context):
         return {
             "_sdc_worker_aoid": record["associateOID"]
