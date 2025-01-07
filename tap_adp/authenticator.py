@@ -70,7 +70,9 @@ class ADPAuthenticator(OAuthAuthenticator):
 
         token_json = response.json()
         self.access_token = token_json["access_token"]
-        expiration = token_json.get("expires_in", self._default_expiration)
+        # subtract 10 minutes from the expiration to allow additional time for
+        # reauthentication to occur.
+        expiration = token_json.get("expires_in", self._default_expiration) - 600
         self.expires_in = int(expiration) if expiration else None
 
         if self.expires_in is None:
