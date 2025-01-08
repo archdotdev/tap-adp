@@ -1883,6 +1883,12 @@
                                             }
                                         }
                                     },
+                                    "amountValue": {
+                                        "type": [
+                                            "number",
+                                            "null"
+                                        ]
+                                    },
                                     "currencyCode": {
                                         "type": [
                                             "string",
@@ -1916,6 +1922,12 @@
                                                 ]
                                             }
                                         }
+                                    },
+                                    "amountValue": {
+                                        "type": [
+                                            "number",
+                                            "null"
+                                        ]
                                     },
                                     "currencyCode": {
                                         "type": [
@@ -1956,6 +1968,12 @@
                                                 ]
                                             }
                                         }
+                                    },
+                                    "amountValue": {
+                                        "type": [
+                                            "number",
+                                            "null"
+                                        ]
                                     },
                                     "currencyCode": {
                                         "type": [
@@ -2016,6 +2034,12 @@
                                         "null"
                                     ],
                                     "properties": {
+                                        "amountValue": {
+                                            "type": [
+                                                "number",
+                                                "null"
+                                            ]
+                                        },
                                         "currencyCode": {
                                             "type": [
                                                 "string",

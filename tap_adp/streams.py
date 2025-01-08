@@ -23,6 +23,7 @@ class WorkersStream(PaginatedADPStream):
     records_jsonpath = "$.workers[*]"
     schema_filepath = SCHEMAS_DIR / "worker.json"
 
+    @property
     def http_headers(self) -> dict:
         headers = super().http_headers
         headers["Accept"] = "application/json;masked=false"
