@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from singer_sdk import Tap
 from singer_sdk import typing as th  # JSON schema typing helpers
-
 from tap_adp import streams
 
 
@@ -65,6 +64,7 @@ class TapADP(Tap):
             streams.JobRequisitionStream(self),
             streams.JobApplicationStream(self),
             streams.QuestionnaireStream(self),
+            streams.DepartmentValidationStream(self),
         ]
 
 
