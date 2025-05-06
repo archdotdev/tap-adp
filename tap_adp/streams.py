@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from http import HTTPStatus
 import typing as t
+from http import HTTPStatus
 from importlib import resources
 
 import requests
-from singer_sdk import typing as th  # JSON Schema typing helpers
 
+from singer_sdk import typing as th  # JSON Schema typing helpers
 from tap_adp.client import ADPStream, PaginatedADPStream
 
 SCHEMAS_DIR = resources.files(__package__) / "schemas"
@@ -178,3 +178,20 @@ class QuestionnaireStream(ADPStream):
     records_jsonpath = "$"
     schema_filepath = SCHEMAS_DIR / "questionnaire.json"
     parent_stream_type=JobRequisitionStream
+
+class DepartmentValidationStream(PaginatedADPStream):
+    name = "department"
+    path = "/hcm/v1/validation-tables/departments"
+    primary_keys = ["payrollGroupCode", "_sdc_namecode_code"]
+    records_jsonpath = "$.listItems[*]"
+    schema_filepath = SCHEMAS_DIR / "department.json"
+    def post_process(
+        self,
+        row: dict,
+        context: dict | None,
+    ) -> dict | None:
+        """
+        To form primary key we needed a nested key, so we're adding it here.
+        """
+        row["_sdc_namecode_code"] = row["nameCode"]["code"]
+        return row
