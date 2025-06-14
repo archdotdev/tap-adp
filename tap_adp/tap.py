@@ -49,6 +49,7 @@ class TapADP(Tap):
         th.Property(
             "start_date",
             th.DateTimeType,
+            default="2024-01-01",
             description="The start date to sync from",
         ),
     ).to_dict()
