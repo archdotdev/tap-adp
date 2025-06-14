@@ -46,6 +46,11 @@ class TapADP(Tap):
                 "'<tap_name>/<tap_version>'"
             ),
         ),
+        th.Property(
+            "start_date",
+            th.DateTimeType,
+            description="The start date to sync from",
+        ),
     ).to_dict()
 
     def discover_streams(self) -> list[streams.ADPStream]:
@@ -65,6 +70,8 @@ class TapADP(Tap):
             streams.JobApplicationStream(self),
             streams.QuestionnaireStream(self),
             streams.DepartmentValidationStream(self),
+            streams.PayrollOutputStream(self),
+            streams.PayrollOutputAccStream(self),
         ]
 
 

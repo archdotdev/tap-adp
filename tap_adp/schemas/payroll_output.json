@@ -1,0 +1,47 @@
+{
+  "type": ["object", "null"],
+  "properties": {
+    "itemID": {
+      "type": ["string", "null"]
+    },
+    "payrollProcessingJobID": {
+      "type": ["string", "null"]
+    },
+    "alternateJobIDs": {
+      "type": ["array", "null"],
+      "items": {
+        "type": ["object", "null"],
+        "additionalProperties": true,
+        "properties": {}
+      }
+    },
+    "payrollRegionCode": {
+      "type": ["object", "null"],
+      "additionalProperties": true,
+      "properties": {}
+    },
+    "payrollGroupCode": {
+      "type": ["object", "null"],
+      "additionalProperties": true,
+      "properties": {}
+    },
+    "payrollScheduleReference": {
+      "type": ["object", "null"],
+      "additionalProperties": true,
+      "properties": {}
+    },
+    "payrollProcessingJobStatusCode": {
+      "type": ["object", "null"],
+      "additionalProperties": true,
+      "properties": {}
+    },
+    "_sdc_payroll_item_id": {
+      "type": ["string", "null"]
+    },
+    "_sdc_modified_schedule_entry_id": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": true
+}

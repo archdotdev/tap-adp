@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 import typing as t
+from datetime import datetime, timedelta, timezone
 from http import HTTPStatus
 from importlib import resources
+from urllib.parse import quote
 
 import requests
 
@@ -13,6 +15,9 @@ from tap_adp.client import ADPStream, PaginatedADPStream
 
 SCHEMAS_DIR = resources.files(__package__) / "schemas"
 
+# Made for the Payroll ACC Class to skip the error when mass processing is disabled
+class SkippableAPIError(Exception):
+    pass
 
 class WorkersStream(PaginatedADPStream):
     """Define custom stream."""
@@ -195,3 +200,102 @@ class DepartmentValidationStream(PaginatedADPStream):
         """
         row["_sdc_namecode_code"] = row["nameCode"]["code"]
         return row
+
+class PayDataInputStream(ADPStream):
+    name = "pay_data_input"
+    path = "/payroll/v1/pay-data-input"
+    primary_keys = []
+    records_jsonpath = "$.payDataInput[*]"
+    schema_filepath = SCHEMAS_DIR / "pay_data_input.json"
+
+class PayrollOutputStream(ADPStream):
+    name = "payroll_output"
+    path = "/payroll/v2/payroll-output"
+    primary_keys = ["itemID"]
+    replication_key = "_sdc_modified_schedule_entry_id"
+    records_jsonpath = "$.payrollOutputs[*]" #There's a root level processMessages key that has metaData about the corresponding payroll(s) might be useful, ignoring for now to move forward quickly
+    schema_filepath = SCHEMAS_DIR / "payroll_output.json"
+
+    def get_child_context(self, record, context):
+        return {
+            "_sdc_payroll_item_id": record["itemID"]
+        }
+    
+    def get_url_params(  # noqa: PLR6301
+        self,
+        context,
+        next_page_token
+    ) -> dict[str, t.Any] | str:
+        # Date 30 days ago
+        date = self.get_starting_timestamp(context)
+        date_str = date.strftime("%Y%m%d")
+        self.logger.info(f"Payroll is using 'payPeriodEndDate ge {date_str}'")
+        return {
+            "$filter": f"payPeriodEndDate ge {date_str}"
+        }
+    
+    def post_process(self, record, context):
+        # We subtract 30 days as recent payrolls are not available to pull
+        # There could be a case where a payroll completes that's more recent than payrolls that havne't been completed yet so we want to play it safe and try to get them all
+        # This gives us a good chance of pulling all the most recent payrolls
+        record["_sdc_modified_schedule_entry_id"] = datetime.strptime(record["payrollScheduleReference"]["scheduleEntryID"][:8], "%Y%m%d")-timedelta(days=30)
+        return record
+
+class PayrollOutputAccStream(ADPStream):
+    name = "payroll_output_acc"
+    path = "/payroll/v2/payroll-output"
+    primary_keys = ["itemID"]
+    records_jsonpath = "$.payrollOutputs[*]"
+    schema_filepath = SCHEMAS_DIR / "payroll_output_acc.json"
+    parent_stream_type=PayrollOutputStream
+
+    def get_url_params(  # noqa: PLR6301
+        self,
+        context,
+        next_page_token
+    ) -> dict[str, t.Any] | str:
+        # Today's date
+        return {
+            "level": "acc-all",
+            "$filter": f"itemID eq {context['_sdc_payroll_item_id']}"
+        }
+    
+    def validate_response(self, response: requests.Response) -> None:
+        if response.status_code == 400 and response.json().get("confirmMessage", {}).get("processMessages"):
+            process_messages = response.json().get("confirmMessage", {}).get("processMessages")
+            for process_message in process_messages:
+                dev_message = process_message["developerMessage"]["messageTxt"]
+                codeValue = process_message["developerMessage"]["codeValue"]
+                if dev_message == "Mass Processing is currently Disabled.":
+                    exception_message = "Mass Processing is currently Disabled."
+                    self.logger.warning(exception_message)
+                    raise SkippableAPIError(exception_message)
+                if codeValue == "PAYGEN00030": #The payroll job id provided was in an invalid state (EDL, DAT, PVE, NER, EER, etc).
+                    exception_message = f"The payroll job id provided was in an invalid state ({dev_message})."
+                    self.logger.warning(exception_message)
+                    raise SkippableAPIError(exception_message)
+                    # Default handling if this isn't hit
+        super().validate_response(response)
+    
+    def get_records(self, context: Context | None) -> t.Iterable[dict[str, t.Any]]:
+        """Return a generator of record-type dictionary objects.
+
+        Each record emitted should be a dictionary of property names to their values.
+
+        Args:
+            context: Stream partition or context dictionary.
+
+        Yields:
+            One item per (possibly processed) record in the API.
+        """
+        try:
+            for record in self.request_records(context):
+                transformed_record = self.post_process(record, context)
+                if transformed_record is None:
+                    # Record filtered out during post_process()
+                    continue
+                yield transformed_record
+        # Works because this is a child stream of PayrollOutputStream and only has one record
+        except SkippableAPIError:
+            self.logger.warning("Mass Processing is currently Disabled.")
+            return

@@ -47,6 +47,11 @@ plugins:
       kind: date_iso8601
       label: Start Date
       description: Initial date to start extracting data from
+    config:
+      start_date: 2025-06-01
+    select:
+    - payroll_output.*
+    - payroll_output_acc.*
 
   loaders:
   - name: target-jsonl
