@@ -4,17 +4,19 @@ from __future__ import annotations
 
 import decimal
 import typing as t
+from functools import cached_property
 from importlib import resources
 
 from singer_sdk.authenticators import OAuthAuthenticator
+from singer_sdk.helpers._typing import TypeConformanceLevel
 from singer_sdk.helpers.jsonpath import extract_jsonpath
-from singer_sdk.pagination import BaseAPIPaginator 
+from singer_sdk.pagination import BaseAPIPaginator
 from singer_sdk.streams import RESTStream
 from tap_adp.authenticator import ADPAuthenticator
-from functools import cached_property
 
 if t.TYPE_CHECKING:
     import requests
+
     from singer_sdk.helpers.types import Context
 
 
@@ -28,6 +30,7 @@ class ADPStream(RESTStream):
     next_page_token_jsonpath = None
     replication_key = None
     _LOG_REQUEST_METRIC_URLS: bool = True
+    TYPE_CONFORMANCE_LEVEL = TypeConformanceLevel.ROOT_ONLY
 
     @property
     def url_base(self) -> str:
