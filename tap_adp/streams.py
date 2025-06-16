@@ -11,6 +11,7 @@ from urllib.parse import quote
 import requests
 
 from singer_sdk import typing as th  # JSON Schema typing helpers
+from singer_sdk.exceptions import RetriableAPIError
 from tap_adp.client import ADPStream, PaginatedADPStream
 
 SCHEMAS_DIR = resources.files(__package__) / "schemas"
@@ -261,16 +262,27 @@ class PayrollOutputAccStream(ADPStream):
         }
     
     def validate_response(self, response: requests.Response) -> None:
+        # Handle 404 errors with specific message about data loading
+        if response.status_code == 404:
+            response_json = response.json()
+            if response_json.get("confirmMessage", {}).get("processMessages"):
+                process_messages = response_json.get("confirmMessage", {}).get("processMessages")
+                for process_message in process_messages:
+                    dev_message= process_message.get("developerMessage", {}).get("messageTxt", "")
+                    code_value = process_message.get("developerMessage", {}).get("codeValue") # Could use TURBOGEN000010 but this is such a weird code, I'm going with the message in case there's others that are close to this
+                    if "still loading the acc-all payroll data" in dev_message:
+                        raise RetriableAPIError(f"ADP API is still loading payroll data, will retry: {dev_message=}, {code_value=}", response)
+        
         if response.status_code == 400 and response.json().get("confirmMessage", {}).get("processMessages"):
             process_messages = response.json().get("confirmMessage", {}).get("processMessages")
             for process_message in process_messages:
                 dev_message = process_message["developerMessage"]["messageTxt"]
-                codeValue = process_message["developerMessage"]["codeValue"]
+                code_value = process_message["developerMessage"]["codeValue"]
                 if dev_message == "Mass Processing is currently Disabled.":
                     exception_message = "Mass Processing is currently Disabled."
                     self.logger.warning(exception_message)
                     raise SkippableAPIError(exception_message)
-                if codeValue == "PAYGEN00030": #The payroll job id provided was in an invalid state (EDL, DAT, PVE, NER, EER, etc).
+                if code_value == "PAYGEN00030": #The payroll job id provided was in an invalid state (EDL, DAT, PVE, NER, EER, etc).
                     exception_message = f"The payroll job id provided was in an invalid state ({dev_message})."
                     self.logger.warning(exception_message)
                     raise SkippableAPIError(exception_message)
