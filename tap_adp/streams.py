@@ -271,7 +271,9 @@ class PayrollOutputAccStream(ADPStream):
                     dev_message= process_message.get("developerMessage", {}).get("messageTxt", "")
                     code_value = process_message.get("developerMessage", {}).get("codeValue") # Could use TURBOGEN000010 but this is such a weird code, I'm going with the message in case there's others that are close to this
                     if "still loading the acc-all payroll data" in dev_message:
-                        raise RetriableAPIError(f"ADP API is still loading payroll data, will retry: {dev_message=}, {code_value=}", response)
+                        msg = f"ADP API is still loading payroll data, will retry: {dev_message=}, {code_value=}"
+                        self.logger.warning(msg)
+                        raise SkippableAPIError(msg) # Even though is is a 404, this has only happened for us when the Payroll has been in a rejected status, so we're skipping it
         
         if response.status_code == 400 and response.json().get("confirmMessage", {}).get("processMessages"):
             process_messages = response.json().get("confirmMessage", {}).get("processMessages")
