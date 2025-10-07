@@ -3,20 +3,26 @@
 from __future__ import annotations
 
 import decimal
+import sys
 import typing as t
 from functools import cached_property
+from http import HTTPStatus
 from importlib import resources
 
-from singer_sdk.authenticators import OAuthAuthenticator
 from singer_sdk.helpers._typing import TypeConformanceLevel
 from singer_sdk.helpers.jsonpath import extract_jsonpath
 from singer_sdk.pagination import BaseAPIPaginator
 from singer_sdk.streams import RESTStream
+
 from tap_adp.authenticator import ADPAuthenticator
+
+if sys.version_info >= (3, 12):
+    from typing import override
+else:
+    from typing_extensions import override
 
 if t.TYPE_CHECKING:
     import requests
-
     from singer_sdk.helpers.types import Context
 
 
@@ -28,20 +34,28 @@ class ADPStream(RESTStream):
 
     records_jsonpath = "$[*]"
     next_page_token_jsonpath = None
-    replication_key = None
+    replication_key: str | None = None
     _LOG_REQUEST_METRIC_URLS: bool = True
     TYPE_CONFORMANCE_LEVEL = TypeConformanceLevel.ROOT_ONLY
 
+    @override
     @property
     def url_base(self) -> str:
         """Return the API URL root, configurable via tap settings."""
         return "https://api.adp.com"
 
+    @override
     @cached_property
     def authenticator(self) -> ADPAuthenticator:
         """Return a new authenticator object."""
-        return ADPAuthenticator.create_for_stream(self)
+        return ADPAuthenticator(
+            client_id=self.config["client_id"],
+            client_secret=self.config["client_secret"],
+            cert_public=self.config["cert_public"],
+            cert_private=self.config["cert_private"],
+        )
 
+    @override
     def parse_response(self, response: requests.Response) -> t.Iterable[dict]:
         """Parse the response and return an iterator of result records.
 
@@ -51,22 +65,23 @@ class ADPStream(RESTStream):
         Yields:
             One item for every item found in the response.
         """
-        if response.status_code == 204 or not response.content:
+        if response.status_code == HTTPStatus.NO_CONTENT or not response.content:
             # No content to parse
-            return iter([])
+            return
         else:
             yield from extract_jsonpath(
                 self.records_jsonpath,
                 input=response.json(parse_float=decimal.Decimal),
             )
 
+    @override
     def response_error_message(self, response: requests.Response) -> str:
+        """Additional info for debugging purposes.
+
+        Authorization is included in Headers, but Body is safe to print out in logs.
         """
-        Additional info for debugging purposes. Authorization is included in Headers,
-        but Body is safe to print out in logs.
-        """
-        truncated_request_body = f"{response.request.body}"[:10000]
-        truncated_response_content = f"{response.content}"[:10000]
+        truncated_request_body = f"{response.request.body!r}"[:10000]
+        truncated_response_content = f"{response.content!r}"[:10000]
         return (
             f"{super().response_error_message(response)} "
             f"with request URL {response.request.url} "
@@ -76,28 +91,36 @@ class ADPStream(RESTStream):
 
 
 class PaginatedADPStream(ADPStream):
+    """Paginated ADP stream class."""
 
+    @override
     def get_new_paginator(self) -> BaseAPIPaginator:
         """Create a new paginator for ADP API pagination."""
         return ADPPaginator(start_value=0, page_size=100)
 
+    @override
     def get_url_params(
         self,
-        context: dict | None,
+        context: Context | None,
         next_page_token: int | None,
     ) -> dict[str, t.Any]:
-        params = super().get_url_params(context, next_page_token)
-        params = {
+        return {
             "$top": 100,  # Set the desired page size
             "$skip": next_page_token or 0,
         }
-        return params
 
 
 class ADPPaginator(BaseAPIPaginator[int]):
-    """Paginator for ADP API that uses 'top' and 'skip' parameters and stops on 204 response."""
+    """Paginator for ADP API that uses 'top' and 'skip' parameters and stops on 204 response."""  # noqa: E501
 
-    def __init__(self, start_value: int, page_size: int, *args: t.Any, **kwargs: t.Any) -> None:
+    @override
+    def __init__(
+        self,
+        start_value: int,
+        page_size: int,
+        *args: t.Any,
+        **kwargs: t.Any,
+    ) -> None:
         """Initialize the paginator with a starting value and page size.
 
         Args:
@@ -109,6 +132,7 @@ class ADPPaginator(BaseAPIPaginator[int]):
         super().__init__(start_value, *args, **kwargs)
         self.page_size = page_size
 
+    @override
     def get_next(self, response: requests.Response) -> int | None:
         """Calculate the next skip value.
 
@@ -120,6 +144,7 @@ class ADPPaginator(BaseAPIPaginator[int]):
         """
         return self.current_value + self.page_size
 
+    @override
     def has_more(self, response: requests.Response) -> bool:
         """Determine if there are more pages to fetch.
 
@@ -128,31 +153,5 @@ class ADPPaginator(BaseAPIPaginator[int]):
 
         Returns:
             `True` if pagination should continue, `False` if a 204 No Content is received.
-        """
-        return response.status_code != 204
-    
-    def response_error_message(self, response: requests.Response) -> str:
-        """Build error message for invalid http statuses.
-
-        WARNING - Override this method when the URL path may contain secrets or PII
-
-        Args:
-            response: A :class:`requests.Response` object.
-
-        Returns:
-            str: The error message
-        """
-        full_path = urlparse(response.url).path or self.path
-        error_type = (
-            "Client"
-            if HTTPStatus.BAD_REQUEST
-            <= response.status_code
-            < HTTPStatus.INTERNAL_SERVER_ERROR
-            else "Server"
-        )
-
-        return (
-            f"{response.status_code} {error_type} Error: "
-            f"{response.reason} for path: {full_path}."
-            f"Response: {response.json()}"
-        )
+        """  # noqa: E501
+        return response.status_code != HTTPStatus.NO_CONTENT
