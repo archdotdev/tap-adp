@@ -17,6 +17,9 @@ else:
     from typing_extensions import override
 
 
+AUTH_ENDPOINT = "https://accounts.adp.com/auth/oauth/v2/token"
+
+
 class ADPAuthenticator(OAuthAuthenticator):
     """Authenticator class for ADP."""
 
@@ -28,12 +31,14 @@ class ADPAuthenticator(OAuthAuthenticator):
         client_secret: str,
         cert_public: str,
         cert_private: str,
+        auth_endpoint: str = AUTH_ENDPOINT,
         **kwargs: Any,
     ) -> None:
         super().__init__(
             *args,
             client_id=client_id,
             client_secret=client_secret,
+            auth_endpoint=auth_endpoint,
             **kwargs,
         )
         self.cert_public = cert_public
