@@ -8,7 +8,6 @@ import sys
 import typing as t
 from datetime import datetime, timedelta
 from http import HTTPStatus
-from importlib import resources
 
 import requests
 
@@ -22,8 +21,6 @@ else:
 if t.TYPE_CHECKING:
     from singer_sdk.helpers.types import Context, Record
 
-SCHEMAS_DIR = resources.files(__package__) / "schemas"
-
 
 class SkippableAPIError(Exception):
     """Exception to skip the error when mass processing is disabled."""
@@ -36,7 +33,6 @@ class WorkersStream(PaginatedADPStream):
     path = "/hr/v2/workers"
     primary_keys = ("associateOID",)
     records_jsonpath = "$.workers[*]"
-    schema_filepath = SCHEMAS_DIR / "worker.json"
 
     @override
     @property
@@ -60,7 +56,6 @@ class WorkerDemographicStream(PaginatedADPStream):
     path = "/hr/v2/worker-demographics"
     primary_keys = ("associateOID",)
     records_jsonpath = "$.workers[*]"
-    schema_filepath = SCHEMAS_DIR / "worker_demographic.json"
 
 
 class PayDistributionStream(ADPStream):
@@ -73,7 +68,6 @@ class PayDistributionStream(ADPStream):
     path = "/payroll/v2/workers/{_sdc_worker_aoid}/pay-distributions"
     primary_keys = ("itemID",)
     records_jsonpath = "$.payDistributions[*]"
-    schema_filepath = SCHEMAS_DIR / "pay_distribution.json"
     parent_stream_type = WorkersStream
 
     @override
@@ -108,7 +102,6 @@ class PayrollInstructionStream(ADPStream):
     path = "/payroll/v1/workers/{_sdc_worker_aoid}/payroll-instructions"
     primary_keys = ("payrollAgreementID",)
     records_jsonpath = "$.payrollInstructions[*]"
-    schema_filepath = SCHEMAS_DIR / "payroll_instruction.json"
     parent_stream_type = WorkersStream
 
 
@@ -145,7 +138,6 @@ class USTaxProfileStream(ADPStream):
     path = "/payroll/v1/workers/{_sdc_worker_aoid}/us-tax-profiles"
     primary_keys = ("itemID",)
     records_jsonpath = "$.usTaxProfiles[*]"
-    schema_filepath = SCHEMAS_DIR / "us_tax_profile.json"
     parent_stream_type = WorkersStream
 
     @override
@@ -190,7 +182,6 @@ class JobRequisitionStream(PaginatedADPStream):
     path = "/staffing/v1/job-requisitions"
     primary_keys = ("itemID",)
     records_jsonpath = "$.jobRequisitions[*]"
-    schema_filepath = SCHEMAS_DIR / "job_requisition.json"
 
     @override
     def get_child_context(self, record: Record, context: Context | None) -> dict:
@@ -207,7 +198,6 @@ class JobApplicationStream(PaginatedADPStream):
     path = "/staffing/v2/job-applications"
     primary_keys = ("itemID",)
     records_jsonpath = "$.jobApplications[*]"
-    schema_filepath = SCHEMAS_DIR / "job_application.json"
 
 
 class QuestionnaireStream(ADPStream):
@@ -222,7 +212,6 @@ class QuestionnaireStream(ADPStream):
     )
     primary_keys = ("questionnaireID",)
     records_jsonpath = "$"
-    schema_filepath = SCHEMAS_DIR / "questionnaire.json"
     parent_stream_type = JobRequisitionStream
 
 
@@ -233,7 +222,6 @@ class DepartmentValidationStream(PaginatedADPStream):
     path = "/hcm/v1/validation-tables/departments"
     primary_keys = ("payrollGroupCode", "_sdc_namecode_code")
     records_jsonpath = "$.listItems[*]"
-    schema_filepath = SCHEMAS_DIR / "department.json"
 
     @override
     def post_process(
@@ -253,7 +241,6 @@ class PayDataInputStream(ADPStream):
     path = "/payroll/v1/pay-data-input"
     primary_keys = ()
     records_jsonpath = "$.payDataInput[*]"
-    schema_filepath = SCHEMAS_DIR / "pay_data_input.json"
 
 
 class PayrollOutputStream(ADPStream):
@@ -264,7 +251,6 @@ class PayrollOutputStream(ADPStream):
     primary_keys = ("itemID",)
     replication_key = "_sdc_modified_schedule_entry_id"
     records_jsonpath = "$.payrollOutputs[*]"  # There's a root level processMessages key that has metaData about the corresponding payroll(s) might be useful, ignoring for now to move forward quickly  # noqa: E501
-    schema_filepath = SCHEMAS_DIR / "payroll_output.json"
 
     @override
     def get_child_context(self, record: Record, context: Context | None) -> dict:
@@ -312,7 +298,6 @@ class PayrollOutputAccStream(ADPStream):
     path = "/payroll/v2/payroll-output"
     primary_keys = ("itemID",)
     records_jsonpath = "$.payrollOutputs[*]"
-    schema_filepath = SCHEMAS_DIR / "payroll_output_acc.json"
     parent_stream_type = PayrollOutputStream
 
     @override

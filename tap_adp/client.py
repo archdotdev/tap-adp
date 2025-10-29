@@ -7,13 +7,14 @@ import sys
 import typing as t
 from functools import cached_property
 from http import HTTPStatus
-from importlib import resources
 
+from singer_sdk import SchemaDirectory, StreamSchema
 from singer_sdk.helpers._typing import TypeConformanceLevel
 from singer_sdk.helpers.jsonpath import extract_jsonpath
 from singer_sdk.pagination import BaseAPIPaginator
 from singer_sdk.streams import RESTStream
 
+from tap_adp import schemas
 from tap_adp.authenticator import ADPAuthenticator
 
 if sys.version_info >= (3, 12):
@@ -26,15 +27,14 @@ if t.TYPE_CHECKING:
     from singer_sdk.helpers.types import Context
 
 
-SCHEMAS_DIR = resources.files(__package__) / "schemas"
-
-
 class ADPStream(RESTStream):
     """ADP stream class."""
 
     records_jsonpath = "$[*]"
     next_page_token_jsonpath = None
     replication_key: str | None = None
+    schema = StreamSchema(SchemaDirectory(schemas))
+
     _LOG_REQUEST_METRIC_URLS: bool = True
     TYPE_CONFORMANCE_LEVEL = TypeConformanceLevel.ROOT_ONLY
 
