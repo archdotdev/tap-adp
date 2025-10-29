@@ -11,10 +11,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       with:
         fetch-depth: 0
-    - uses: hynek/build-and-inspect-python-package@v2
+    - uses: hynek/build-and-inspect-python-package@efb823f52190ad02594531168b7a2d5790e66516 # v2.14.0
 
   publish:
     name: Publish to PyPI
@@ -26,12 +26,12 @@ jobs:
     # environment: pypi
     if: startsWith(github.ref, 'refs/tags/')
     steps:
-    - uses: actions/download-artifact@v4
+    - uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6.0.0
       with:
         name: Packages
         path: dist
     - name: Upload wheel to release
-      uses: svenstaro/upload-release-action@v2
+      uses: svenstaro/upload-release-action@81c65b7cd4de9b2570615ce3aad67a41de5b1a13 # 2.11.2
       with:
         repo_token: ${{secrets.GITHUB_TOKEN}}
         file: dist/*.whl
@@ -42,4 +42,4 @@ jobs:
     - name: Publish
       ## TODO: create a trusted publisher on PyPI
       ## https://docs.pypi.org/trusted-publishers/
-      uses: pypa/gh-action-pypi-publish@v1.12.3
+      uses: pypa/gh-action-pypi-publish@ed0c53931b1dc9bd32cbe73a98c7f6766f8a527e # v1.13.0
