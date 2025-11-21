@@ -21,7 +21,7 @@ license = "Apache-2.0"
 
 [tool.poetry.dependencies]
 python = ">=3.10"
-singer-sdk = { version="~=0.52.4", extras = ["faker",] }
+singer-sdk = { version="~=0.53.2", extras = ["faker",] }
 s3fs = { version = "~=2025.10.0", optional = true }
 requests = "~=2.32.3"
 typing-extensions = {version = ">=4.15.0", python = "<3.12"}
