@@ -1,9 +1,11 @@
-[tool.poetry]
+[project]
 name = "tap-adp"
 version = "0.0.1"
 description = "Singer tap for ADP, built with the Meltano Singer SDK."
+authors = [{ name = "AutoIDM", email = "support@autoidm.com" }]
+requires-python = ">=3.10"
 readme = "README.md"
-authors = ["AutoIDM <support@autoidm.com>"]
+license = "Apache-2.0"
 keywords = [
     "ELT",
     "ADP",
@@ -17,35 +19,44 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
 ]
-license = "Apache-2.0"
+dependencies = [
+    "singer-sdk[faker]~=0.53.2",
+    "requests~=2.32.3",
+    "typing-extensions>=4.15.0 ; python_full_version < '3.12'",
+]
 
-[tool.poetry.dependencies]
-python = ">=3.10"
-singer-sdk = { version="~=0.53.2", extras = ["faker",] }
-s3fs = { version = "~=2026.1.0", optional = true }
-requests = "~=2.32.3"
-typing-extensions = {version = ">=4.15.0", python = "<3.12"}
+[project.optional-dependencies]
+s3 = ["s3fs~=2026.1.0"]
 
-[tool.poetry.group.dev.dependencies]
-genson = "~=1.3.0"
-mypy = ">=1.18.2"
-pytest = ">=8"
-singer-sdk = { version="*", extras = ["testing"] }
-ty = ">=0.0.1a24"
-types-requests = ">=2.32.3"
+[project.scripts]
+tap-adp = "tap_adp.tap:TapADP.cli"
 
-[tool.poetry.extras]
-s3 = ["s3fs"]
+[dependency-groups]
+dev = [
+    "genson~=1.3.0",
+    "mypy>=1.18.2",
+    "pytest>=9",
+    "singer-sdk[testing]",
+    "ty>=0.0.1a24",
+    "types-requests>=2.32.3",
+]
 
-[tool.pytest.ini_options]
-addopts = '--durations=10'
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest]
+addopts = [
+  "--durations=10",
+]
+minversion = "9"
 
 [tool.mypy]
-python_version = "3.12"
 warn_unused_configs = true
+warn_unused_ignores = true
 
 [tool.ruff]
-target-version = "py310"
+line-length = 100
 
 [tool.ruff.lint]
 ignore = [
@@ -62,11 +73,3 @@ allow-star-arg-any = true
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
-
-[tool.poetry.scripts]
-# CLI declaration
-tap-adp = 'tap_adp.tap:TapADP.cli'
