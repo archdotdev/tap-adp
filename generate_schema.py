@@ -38,7 +38,7 @@ def make_nullable(schema: dict) -> dict:
 
 def generate_schema(
     stream_instance: Stream,
-    context: Context,
+    context: Context | None,
     output_file: str,
 ) -> None:
     """Generate a schema for a given stream."""
@@ -89,7 +89,9 @@ def main() -> None:
 
     for child_name, child_stream in children.items():
         generate_schema(
-            child_stream, context=None, output_file=f"tap_adp/schemas/{child_name}.json"
+            child_stream,
+            context=None,
+            output_file=f"tap_adp/schemas/{child_name}.json",
         )
 
 

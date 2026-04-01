@@ -22,7 +22,7 @@ classifiers = [
 dependencies = [
     "singer-sdk[faker]~=0.53.2",
     "requests~=2.33.0",
-    "typing-extensions>=4.15.0 ; python_full_version < '3.12'",
+    "typing-extensions>=4.15.0 ; python_full_version < '3.13'",
 ]
 
 [project.optional-dependencies]
@@ -47,11 +47,20 @@ build-backend = "hatchling.build"
 
 [tool.pytest]
 addopts = [
+  "-v",
+  "-ra",
   "--durations=10",
 ]
+filterwarnings = [ "error" ]
+log_level = "INFO"
 minversion = "9"
+strict = true
+testpaths = [ "tests" ]
 
 [tool.mypy]
+enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool"]
+strict = true
+warn_unreachable = true
 warn_unused_configs = true
 warn_unused_ignores = true
 

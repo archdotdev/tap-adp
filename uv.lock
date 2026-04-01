@@ -1549,7 +1549,7 @@ source = { editable = "." }
 dependencies = [
     { name = "requests" },
     { name = "singer-sdk", extra = ["faker"] },
-    { name = "typing-extensions", marker = "python_full_version < '3.12'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.13'" },
 ]
 
 [package.optional-dependencies]
@@ -1572,7 +1572,7 @@ requires-dist = [
     { name = "requests", specifier = "~=2.33.0" },
     { name = "s3fs", marker = "extra == 's3'", specifier = "~=2026.3.0" },
     { name = "singer-sdk", extras = ["faker"], specifier = "~=0.53.2" },
-    { name = "typing-extensions", marker = "python_full_version < '3.12'", specifier = ">=4.15.0" },
+    { name = "typing-extensions", marker = "python_full_version < '3.13'", specifier = ">=4.15.0" },
 ]
 provides-extras = ["s3"]
 

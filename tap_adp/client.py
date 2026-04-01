@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import decimal
 import sys
-import typing as t
 from functools import cached_property
 from http import HTTPStatus
+from typing import TYPE_CHECKING, Any, Generic, TypeVar
 
 from singer_sdk import SchemaDirectory, StreamSchema
 from singer_sdk.helpers._typing import TypeConformanceLevel
@@ -22,12 +22,21 @@ if sys.version_info >= (3, 12):
 else:
     from typing_extensions import override
 
-if t.TYPE_CHECKING:
+if sys.version_info >= (3, 13):
+    from typing import TypeVar
+else:
+    from typing_extensions import TypeVar
+
+if TYPE_CHECKING:
+    from collections.abc import Iterable
+
     import requests
     from singer_sdk.helpers.types import Context
 
+_T = TypeVar("_T", default=Any)
 
-class ADPStream(RESTStream):
+
+class ADPStream(RESTStream[_T], Generic[_T]):
     """ADP stream class."""
 
     records_jsonpath = "$[*]"
@@ -56,7 +65,7 @@ class ADPStream(RESTStream):
         )
 
     @override
-    def parse_response(self, response: requests.Response) -> t.Iterable[dict]:
+    def parse_response(self, response: requests.Response) -> Iterable[dict[str, Any]]:
         """Parse the response and return an iterator of result records.
 
         Args:
@@ -90,11 +99,11 @@ class ADPStream(RESTStream):
         )
 
 
-class PaginatedADPStream(ADPStream):
+class PaginatedADPStream(ADPStream[int]):
     """Paginated ADP stream class."""
 
     @override
-    def get_new_paginator(self) -> BaseAPIPaginator:
+    def get_new_paginator(self) -> ADPPaginator:
         """Create a new paginator for ADP API pagination."""
         return ADPPaginator(start_value=0, page_size=100)
 
@@ -103,7 +112,7 @@ class PaginatedADPStream(ADPStream):
         self,
         context: Context | None,
         next_page_token: int | None,
-    ) -> dict[str, t.Any]:
+    ) -> dict[str, Any]:
         return {
             "$top": 100,  # Set the desired page size
             "$skip": next_page_token or 0,
@@ -111,15 +120,15 @@ class PaginatedADPStream(ADPStream):
 
 
 class ADPPaginator(BaseAPIPaginator[int]):
-    """Paginator for ADP API that uses 'top' and 'skip' parameters and stops on 204 response."""  # noqa: E501
+    """Paginator for ADP API that uses 'top' and 'skip' parameters and stops on 204 response."""
 
     @override
     def __init__(
         self,
         start_value: int,
         page_size: int,
-        *args: t.Any,
-        **kwargs: t.Any,
+        *args: Any,
+        **kwargs: Any,
     ) -> None:
         """Initialize the paginator with a starting value and page size.
 
@@ -153,5 +162,5 @@ class ADPPaginator(BaseAPIPaginator[int]):
 
         Returns:
             `True` if pagination should continue, `False` if a 204 No Content is received.
-        """  # noqa: E501
+        """
         return response.status_code != HTTPStatus.NO_CONTENT
