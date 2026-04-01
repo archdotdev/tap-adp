@@ -2,10 +2,15 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from singer_sdk import Tap
 from singer_sdk import typing as th  # JSON schema typing helpers
 
 from tap_adp import streams
+
+if TYPE_CHECKING:
+    from tap_adp.client import ADPStream
 
 
 class TapADP(Tap):
@@ -55,7 +60,7 @@ class TapADP(Tap):
         ),
     ).to_dict()
 
-    def discover_streams(self) -> list[streams.ADPStream]:
+    def discover_streams(self) -> list[ADPStream]:
         """Return a list of discovered streams.
 
         Returns:

@@ -5,9 +5,9 @@
 from __future__ import annotations
 
 import sys
-import typing as t
 from datetime import datetime, timedelta
 from http import HTTPStatus
+from typing import TYPE_CHECKING, Any
 
 import requests
 
@@ -18,7 +18,9 @@ if sys.version_info >= (3, 12):
 else:
     from typing_extensions import override
 
-if t.TYPE_CHECKING:
+if TYPE_CHECKING:
+    from collections.abc import Iterable
+
     from singer_sdk.helpers.types import Context, Record
 
 
@@ -36,13 +38,13 @@ class WorkersStream(PaginatedADPStream):
 
     @override
     @property
-    def http_headers(self) -> dict:
+    def http_headers(self) -> dict[str, str]:
         headers = super().http_headers
         headers["Accept"] = "application/json;masked=false"
         return headers
 
     @override
-    def get_child_context(self, record: Record, context: Context | None) -> dict:
+    def get_child_context(self, record: Record, context: Context | None) -> Context | None:
         return {"_sdc_worker_aoid": record["associateOID"]}
 
 
@@ -141,7 +143,7 @@ class USTaxProfileStream(ADPStream):
     parent_stream_type = WorkersStream
 
     @override
-    def parse_response(self, response: requests.Response) -> t.Iterable[dict]:
+    def parse_response(self, response: requests.Response) -> Iterable[dict[str, Any]]:
         if response.status_code == HTTPStatus.NOT_FOUND:
             return iter([])
         return super().parse_response(response)
@@ -184,7 +186,7 @@ class JobRequisitionStream(PaginatedADPStream):
     records_jsonpath = "$.jobRequisitions[*]"
 
     @override
-    def get_child_context(self, record: Record, context: Context | None) -> dict:
+    def get_child_context(self, record: Record, context: Context | None) -> Context | None:
         return {"_sdc_requisition_id": record["itemID"]}
 
 
@@ -207,9 +209,7 @@ class QuestionnaireStream(ADPStream):
     """
 
     name = "questionnaire"
-    path = (
-        "/staffing/v3/work-fulfillment/recruiting-questionnaires/{_sdc_requisition_id}"
-    )
+    path = "/staffing/v3/work-fulfillment/recruiting-questionnaires/{_sdc_requisition_id}"
     primary_keys = ("questionnaireID",)
     records_jsonpath = "$"
     parent_stream_type = JobRequisitionStream
@@ -253,15 +253,15 @@ class PayrollOutputStream(ADPStream):
     records_jsonpath = "$.payrollOutputs[*]"  # There's a root level processMessages key that has metaData about the corresponding payroll(s) might be useful, ignoring for now to move forward quickly  # noqa: E501
 
     @override
-    def get_child_context(self, record: Record, context: Context | None) -> dict:
+    def get_child_context(self, record: Record, context: Context | None) -> Context | None:
         return {"_sdc_payroll_item_id": record["itemID"]}
 
     @override
     def get_url_params(
         self,
         context: Context | None,
-        next_page_token: t.Any | None,
-    ) -> dict[str, t.Any] | str:
+        next_page_token: Any | None,
+    ) -> dict[str, Any] | str:
         params = {}
         # Date 30 days ago
         if date := self.get_starting_timestamp(context):
@@ -273,7 +273,7 @@ class PayrollOutputStream(ADPStream):
     @override
     def post_process(
         self,
-        record: Record,
+        row: Record,
         context: Context | None = None,
     ) -> Record | None:
         # We subtract 30 days as recent payrolls are not available to pull
@@ -281,14 +281,14 @@ class PayrollOutputStream(ADPStream):
         # payrolls that havne't been completed yet so we want to play it safe and try
         # to get them all.
         # This gives us a good chance of pulling all the most recent payrolls
-        record["_sdc_modified_schedule_entry_id"] = (
+        row["_sdc_modified_schedule_entry_id"] = (
             datetime.strptime(  # noqa: DTZ007
-                record["payrollScheduleReference"]["scheduleEntryID"][:8],
+                row["payrollScheduleReference"]["scheduleEntryID"][:8],
                 "%Y%m%d",
             )
             - timedelta(days=30)
         )
-        return record
+        return row
 
 
 class PayrollOutputAccStream(ADPStream):
@@ -304,8 +304,8 @@ class PayrollOutputAccStream(ADPStream):
     def get_url_params(
         self,
         context: Context | None,
-        next_page_token: t.Any | None,
-    ) -> dict[str, t.Any] | str:
+        next_page_token: Any | None,
+    ) -> dict[str, Any] | str:
         # Today's date
         assert context is not None  # noqa: S101
 
@@ -321,13 +321,9 @@ class PayrollOutputAccStream(ADPStream):
         if response.status_code == HTTPStatus.NOT_FOUND:
             response_json = response.json()
             if response_json.get("confirmMessage", {}).get("processMessages"):
-                process_messages = response_json.get("confirmMessage", {}).get(
-                    "processMessages"
-                )
+                process_messages = response_json.get("confirmMessage", {}).get("processMessages")
                 for process_message in process_messages:
-                    dev_message = process_message.get("developerMessage", {}).get(
-                        "messageTxt", ""
-                    )
+                    dev_message = process_message.get("developerMessage", {}).get("messageTxt", "")
                     code_value = process_message.get(
                         "developerMessage", {}
                     ).get(
@@ -343,9 +339,7 @@ class PayrollOutputAccStream(ADPStream):
         if response.status_code == HTTPStatus.BAD_REQUEST and response.json().get(
             "confirmMessage", {}
         ).get("processMessages"):
-            process_messages = (
-                response.json().get("confirmMessage", {}).get("processMessages")
-            )
+            process_messages = response.json().get("confirmMessage", {}).get("processMessages")
             for process_message in process_messages:
                 dev_message = process_message["developerMessage"]["messageTxt"]
                 code_value = process_message["developerMessage"]["codeValue"]
@@ -356,14 +350,16 @@ class PayrollOutputAccStream(ADPStream):
                 if (
                     code_value == "PAYGEN00030"
                 ):  # The payroll job id provided was in an invalid state (EDL, DAT, PVE, NER, EER, etc).  # noqa: E501
-                    exception_message = f"The payroll job id provided was in an invalid state ({dev_message})."  # noqa: E501
+                    exception_message = (
+                        f"The payroll job id provided was in an invalid state ({dev_message})."
+                    )
                     self.logger.warning(exception_message)
                     raise SkippableAPIError(exception_message)
                     # Default handling if this isn't hit
         super().validate_response(response)
 
     @override
-    def get_records(self, context: Context | None) -> t.Iterable[Record]:
+    def get_records(self, context: Context | None) -> Iterable[Record]:
         """Return a generator of record-type dictionary objects.
 
         Each record emitted should be a dictionary of property names to their values.
