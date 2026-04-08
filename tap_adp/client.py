@@ -8,6 +8,7 @@ from functools import cached_property
 from http import HTTPStatus
 from typing import TYPE_CHECKING, Any, Generic, TypeVar
 
+import requests
 from singer_sdk import SchemaDirectory, StreamSchema
 from singer_sdk.helpers._typing import TypeConformanceLevel
 from singer_sdk.helpers.jsonpath import extract_jsonpath
@@ -15,7 +16,7 @@ from singer_sdk.pagination import BaseAPIPaginator
 from singer_sdk.streams import RESTStream
 
 from tap_adp import schemas
-from tap_adp.authenticator import ADPAuthenticator
+from tap_adp.authenticator import ADPAuthenticator, _MTLSAdapter
 
 if sys.version_info >= (3, 12):
     from typing import override
@@ -30,7 +31,6 @@ else:
 if TYPE_CHECKING:
     from collections.abc import Iterable
 
-    import requests
     from singer_sdk.helpers.types import Context
 
 _T = TypeVar("_T", default=Any)
@@ -63,6 +63,13 @@ class ADPStream(RESTStream[_T], Generic[_T]):
             cert_public=self.config["cert_public"],
             cert_private=self.config["cert_private"],
         )
+
+    @property
+    def requests_session(self) -> requests.Session:
+        """Return a requests session with the mTLS adapter mounted."""
+        session = super().requests_session
+        session.mount("https://", _MTLSAdapter(ssl_context=self.authenticator.ssl_context))
+        return session
 
     @override
     def parse_response(self, response: requests.Response) -> Iterable[dict[str, Any]]:
