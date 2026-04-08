@@ -6,6 +6,7 @@ import os
 import ssl
 import sys
 import tempfile
+from functools import cached_property
 from typing import Any
 
 import requests
@@ -74,7 +75,8 @@ class ADPAuthenticator(OAuthAuthenticator):
             "client_secret": self.client_secret,
         }
 
-    def _build_ssl_context(self) -> ssl.SSLContext:
+    @cached_property
+    def ssl_context(self) -> ssl.SSLContext:
         """Build an SSL context with the client certificate pre-loaded.
 
         Writes the PEM strings to temporary files, loads them into an
@@ -108,7 +110,7 @@ class ADPAuthenticator(OAuthAuthenticator):
         request_time = utc_now()
 
         session = requests.Session()
-        session.mount("https://", _MTLSAdapter(ssl_context=self._build_ssl_context()))
+        session.mount("https://", _MTLSAdapter(ssl_context=self.ssl_context))
 
         try:
             response = session.post(
