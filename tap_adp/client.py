@@ -8,7 +8,6 @@ from functools import cached_property
 from http import HTTPStatus
 from typing import TYPE_CHECKING, Any, Generic, TypeVar
 
-import requests
 from singer_sdk import SchemaDirectory, StreamSchema
 from singer_sdk.helpers._typing import TypeConformanceLevel
 from singer_sdk.helpers.jsonpath import extract_jsonpath
@@ -31,6 +30,7 @@ else:
 if TYPE_CHECKING:
     from collections.abc import Iterable
 
+    import requests
     from singer_sdk.helpers.types import Context
 
 _T = TypeVar("_T", default=Any)
