@@ -9,7 +9,7 @@ from http import HTTPStatus
 from typing import TYPE_CHECKING, Any, Generic, TypeVar
 
 from singer_sdk import SchemaDirectory, StreamSchema
-from singer_sdk.helpers._typing import TypeConformanceLevel
+from singer_sdk.helpers.conform import TypeConformanceLevel
 from singer_sdk.helpers.jsonpath import extract_jsonpath
 from singer_sdk.pagination import BaseAPIPaginator
 from singer_sdk.streams import RESTStream
